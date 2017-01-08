@@ -1,0 +1,29 @@
+= render 'payola/transactions/stripe_header'
+
+= form_tag('/subscriptions',
+      class: 'payola-onestep-subscription-form',
+      'data-payola-base-path' => '/payola',
+      'data-payola-plan-type' => @plan.plan_class,
+      'data-payola-plan-id' => @plan.id) do |f|
+  %span.payola-payment-error
+  Email:
+  %br
+  %input{type:"email", name:"stripeEmail", 'data-payola':"email"}
+  %br
+  Card Number
+  %br
+  %input{type:"text", 'data-stripe':"number"}
+  %br
+  Exp Month
+  %br
+  %input{type:"text", 'data-stripe':"exp_month"}
+  %br
+  Exp Year
+  %br
+  %input{type:"text", 'data-stripe':"exp_year"}
+  %br
+  CVC
+  %br
+  %input{type:"text", 'data-stripe':"cvc"}
+  %br
+  %input{type:"submit"}
