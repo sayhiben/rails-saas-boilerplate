@@ -29,6 +29,7 @@ end
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'awesome_print'
+  gem 'dotenv-rails'
 end
 
 group :development do
