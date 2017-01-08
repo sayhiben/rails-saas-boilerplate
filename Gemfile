@@ -18,6 +18,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'haml'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'pundit'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
