@@ -1,29 +1,31 @@
+= javascript_include_tag 'jquery.payment'
 = render 'payola/transactions/stripe_header'
 
-= form_tag('/subscriptions',
-      class: 'payola-onestep-subscription-form',
-      'data-payola-base-path' => '/payola',
-      'data-payola-plan-type' => @plan.plan_class,
-      'data-payola-plan-id' => @plan.id) do |f|
-  %span.payola-payment-error
-  Email:
-  %br
-  %input{type:"email", name:"stripeEmail", 'data-payola':"email"}
-  %br
-  Card Number
-  %br
-  %input{type:"text", 'data-stripe':"number"}
-  %br
-  Exp Month
-  %br
-  %input{type:"text", 'data-stripe':"exp_month"}
-  %br
-  Exp Year
-  %br
-  %input{type:"text", 'data-stripe':"exp_year"}
-  %br
-  CVC
-  %br
-  %input{type:"text", 'data-stripe':"cvc"}
-  %br
-  %input{type:"submit"}
+.row
+  .col-xs-8.col-xs-offset-2
+    .well
+      = form_tag('/subscriptions',
+            class: 'payola-onestep-subscription-form',
+            'data-payola-base-path' => '/payola',
+            'data-payola-plan-type' => @plan.plan_class,
+            'data-payola-plan-id' => @plan.id) do |f|
+        .form-group
+          %label Email Address
+          %input{type:"email", name:"stripeEmail", 'data-payola':"email", class: 'form-control'}
+        .form-group
+          %label Card Number
+          %input{type:"text", 'data-stripe':"number", size: 20, class: 'card-number form-control', placeholder: '**** **** **** ****'}
+        .row
+          .col-md-6
+            .form-group
+              %label Expiration Date
+              %input{type:"text", size: 8, class: 'exp-date form-control', placeholder: 'MM / YY'}
+              %input{type:"hidden", 'data-stripe':'exp_month'}
+              %input{type:"hidden", 'data-stripe':'exp_year'}
+          .col-md-6
+            .form-group
+            %label CVC
+            %input{type:"text", size: 4, 'data-stripe':"cvc", class:'form-control', placeholder: '***'}
+        .text-center
+          %input{type:"submit", value:'Pay Now', class: 'btn btn-info btn-lg'}
+        .alert.alert-warning.payola-payment-error{style:'display:none;'}
