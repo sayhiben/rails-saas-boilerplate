@@ -1,10 +1,10 @@
 class UserPolicy < ApplicationPolicy
   def index?
-    user.admin?
+    user.has_role?(:admin)
   end
 
   def show?
-    user.admin? || (user.id == record.id && scope.where(:id => record.id).exists?)
+    user.has_role?(:admin) || (user.id == record.id && scope.where(:id => record.id).exists?)
   end
 
   def create?
@@ -16,7 +16,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || (user.id == record.id)
+    user.has_role?(:admin) || (user.id == record.id)
   end
 
   def edit?
@@ -24,6 +24,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin? || (user.id == record.id)
+    user.has_role?(:admin) || (user.id == record.id)
   end
 end

@@ -7,31 +7,31 @@ class ActiveAdminPolicy < ApplicationPolicy
   end
 
   def index?
-    @user.admin?
+    user.has_role? :admin
   end
 
   def show?
-    @user.admin? 
+    user.has_role? :admin
   end
 
   def create?
-    @user.admin?
+    user.has_role? :admin
   end
 
   def new?
-    @user.admin? && create?
+    user.has_role?(:admin) || create?
   end
 
   def update?
-    @user.admin?
+    user.has_role? :admin
   end
 
   def edit?
-    @user.admin? && update?
+    user.has_role?(:admin) || update?
   end
 
   def destroy?
-    @user.admin?
+    user.has_role? :admin
   end
 
   class Scope < Scope
