@@ -24,6 +24,13 @@ end
 ################################################################################
 
 SubscriptionPlan.create!(
+  name: 'Free',
+  stripe_id: 'free',
+  amount: 0,
+  interval: 'month'
+)
+
+SubscriptionPlan.create!(
   name: 'Standard',
   stripe_id: 'standard',
   amount: 999,
