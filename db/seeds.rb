@@ -12,7 +12,11 @@
 ################################################################################
 
 admins = []
-admins << User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+admins << User.create!(
+  email: 'admin@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
 admins.each do |user|
   user.add_role :admin
 end

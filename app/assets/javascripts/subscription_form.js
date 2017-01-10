@@ -13,7 +13,7 @@ $(function() {
   $('.card-number').on('keyup', function() {
     var e = $('.card-number').first();
     var type = $.payment.cardType(e.val());
-    var img = "card.png";
+    var img = "credit.png";
     switch(type) {
         case "visa":
           img = "visa.png";
@@ -28,7 +28,7 @@ $(function() {
           img = "amex.png";
           break;
     }
-    e.css('background-image', 'url(/images/' + img + ')');
+    e.css('background-image', 'url(/assets/icons/payment/' + img + ')');
   });
 
   $('.plan').on('click', function(event){
