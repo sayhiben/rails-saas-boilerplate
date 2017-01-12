@@ -1,0 +1,15 @@
+AllCops:
+  Excludes:
+    - db/**
+    - db/*/**
+    - bin/spring
+    - config/initializers/devise.rb
+
+Metrics/LineLength:
+  Max: 120
+
+Documentation:
+  Enabled: false
+
+Rails:
+  Enabled: true

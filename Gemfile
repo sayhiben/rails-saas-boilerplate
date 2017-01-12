@@ -1,44 +1,47 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.1'
-gem 'pg'
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.5'
-gem 'redis', '~> 3.0'
+gem 'activeadmin', github: 'activeadmin'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
 gem 'haml'
-gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'pundit'
-gem 'payola-payments'
-gem 'rolify'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'money'
+gem 'payola-payments'
+gem 'pg'
+gem 'puma', '~> 3.0'
+gem 'pundit'
+gem 'rails', '~> 5.0.1'
+gem 'redis', '~> 3.0'
+gem 'rolify'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 group :development, :test do
-  gem 'byebug', platform: :mri
   gem 'awesome_print'
+  gem 'byebug', platform: :mri
   gem 'dotenv-rails'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'brakeman'
   gem 'listen', '~> 3.0.5'
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

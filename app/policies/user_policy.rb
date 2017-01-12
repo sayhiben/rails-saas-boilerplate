@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 class UserPolicy < ApplicationPolicy
   def index?
     user.has_role?(:admin)
   end
 
   def show?
-    user.has_role?(:admin) || (user.id == record.id && scope.where(:id => record.id).exists?)
+    user.has_role?(:admin) || (user.id == record.id && scope.where(id: record.id).exists?)
   end
 
   def create?
