@@ -23,6 +23,7 @@ gem 'rails', '~> 5.0.1'
 gem 'redis', '~> 3.0'
 gem 'rolify'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
 
 source 'https://rails-assets.org' do
