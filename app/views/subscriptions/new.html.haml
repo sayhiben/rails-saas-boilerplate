@@ -19,7 +19,7 @@
             'data-payola-plan-id' => @plans.first.id) do |f|
         .form-group
           %label Email Address
-          %input{type:"email", name:"stripeEmail", 'data-payola':"email", class: 'form-control'}
+          %input{type:"email", name:"stripeEmail", 'data-payola':"email", class: 'form-control', value: "#{current_user.email}"}
         .form-group
           %label Card Number
           %input{type:"text", 'data-stripe':"number", size: 20, class: 'card-number form-control', placeholder: '**** **** **** ****'}
