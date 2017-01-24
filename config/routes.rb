@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   mount Payola::Engine => '/payola', as: :payola
   devise_for :users
   ActiveAdmin.routes(self)
-  resources :subscriptions
-  root to: 'home#index'
+
+  authenticated :user do
+    resources :subscriptions
+    root to: 'home#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
 end
