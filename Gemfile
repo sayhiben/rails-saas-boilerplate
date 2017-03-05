@@ -39,6 +39,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'listen', '~> 3.0.5'
+  gem 'rails_best_practices'
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

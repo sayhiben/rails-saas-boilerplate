@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class SubscriptionPlan < ApplicationRecord
+class Plan < ApplicationRecord
   include Payola::Plan
 
   def formatted_amount(currency: 'USD')

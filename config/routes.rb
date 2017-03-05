@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   authenticated :user do
-    resources :subscriptions
+    resources :subscriptions, only: [:new, :create]
     root to: 'home#index', as: :authenticated_root
   end
   root to: redirect('/users/sign_in')

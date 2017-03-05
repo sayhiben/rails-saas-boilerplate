@@ -25,24 +25,24 @@ end
 ################################################################################
 # End Create Users
 ################################################################################
-# Create SubscriptionPlans
+# Create Plans
 ################################################################################
 
-SubscriptionPlan.create!(
+Plan.create!(
   name: 'Free',
   stripe_id: 'free',
   amount: 0,
   interval: 'month'
 )
 
-SubscriptionPlan.create!(
+Plan.create!(
   name: 'Standard',
   stripe_id: 'standard',
   amount: 999,
   interval: 'month'
 )
 
-SubscriptionPlan.create!(
+Plan.create!(
   name: 'Professional',
   stripe_id: 'professional',
   amount: 2999,
