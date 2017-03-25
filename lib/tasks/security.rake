@@ -5,5 +5,5 @@ task :rails_best_practices do
 end
 
 task :brakeman do
-  sh "brakeman -q -z"
+  sh 'brakeman -q -z'
 end
