@@ -40,6 +40,5 @@
 
     .container-fluid
       .main-content
-        - flash.each do |type, msg|
-          = content_tag :p, msg, class: type
+        - flash_messages
         = yield
