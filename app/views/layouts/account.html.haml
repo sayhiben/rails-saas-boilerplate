@@ -7,4 +7,8 @@
     .container-fluid
       .main-content
         - flash_messages
-        = yield
+        .row
+          .col-md-3.offset-md-1
+            = render partial: 'layouts/account/sidebar'
+          .col-md-6
+            = yield

@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   mount Payola::Engine => '/payola', as: :payola
   mount Flipper::UI.app(Rails.application.config.flipper) => '/flipper'
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations'}
   ActiveAdmin.routes(self)
 
   authenticated :user do

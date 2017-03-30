@@ -1,17 +1,13 @@
 .container
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: 'form-horizontal') do |f|
     .row
-      .col-md-3
-      .col-md-6
+      .col
         %h2 Update email and password
         %hr
     .row
-      .col-md-3
-      .col-md-6
-        = devise_error_messages!
+      = devise_error_messages!
     .row
-      .col-md-3
-      .col-md-6
+      .col
         .form-group
           = f.label :email
           .input-group.mb-2.mr-sm-2.mb-sm-0
@@ -20,38 +16,33 @@
             %div
               Currently waiting confirmation for: #{resource.unconfirmed_email}
     .row
-      .col-md-3
-      .col-md-6
+      .col
         .form-group
           = f.label :password
           %i (leave blank if you don't want to change it)
           .input-group.mb-2.mr-sm-2.mb-sm-0
-            = f.password_field :password, autocomplete: "off", class: 'form-control'
+            = f.password_field :password, autocomplete: 'off', class: 'form-control'
           - if @minimum_password_length
             %em
               = @minimum_password_length
               characters minimum
     .row
-      .col-md-3
-      .col-md-6
+      .col
         .form-group
           = f.label :password_confirmation
           .input-group.mb-2.mr-sm-2.mb-sm-0
-            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+            = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
     .row
-      .col-md-3
-      .col-md-6
+      .col
         %hr
     .row
-      .col-md-3
-      .col-md-6
+      .col
         .form-group
           = f.label :current_password
           .input-group.mb-2.mr-sm-2.mb-sm-0
-            = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+            = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
           %em (we need your current password to confirm your changes)
     .row
-      .col-md-3
-      .col-md-6
+      .col
         .form-group
           = f.button 'Update', class: 'btn btn-success'
