@@ -30,13 +30,4 @@ $(function() {
     }
     e.css('background-image', 'url(/assets/icons/payment/' + img + ')');
   });
-
-  $('.plan').on('click', function(event){
-    if($('.plan.selected') !== $(this)){
-      $('.plan').removeClass('selected');
-      $(this).addClass('selected');
-      $('.payola-onestep-subscription-form').data('payola-plan-id',
-                                                  $(this).data('plan-id'));
-    }
-  });
 });

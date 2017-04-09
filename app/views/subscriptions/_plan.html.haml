@@ -1,0 +1,20 @@
+.col-md-4
+  .panel.plan{ 'data-plan-id': plan.id }
+    .panel-heading
+      %h4.text-center
+        = plan.name
+    .panel-body.text-center
+      %p.lead
+        %strong #{plan.formatted_amount} / month
+    -#%ul.list-group.list-group-flush.text-center
+    -#  %li.list-group-item
+    -#    %i.icon-ok>
+    -#    Feature 1
+    -#  %li.list-group-item
+    -#    %i.icon-ok.text-danger>
+    -#    Feature 2
+    -#  %li.list-group-item
+    -#    %i.icon-ok.text-danger>
+    -#    Feature 3
+    .panel-footer
+      = plan_button(plan)

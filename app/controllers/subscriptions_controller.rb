@@ -3,6 +3,8 @@ class SubscriptionsController < ApplicationController
   # bring in the `render_payola_status` helper.
   include Payola::StatusBehavior
 
+  layout 'account'
+
   def new
     @plans = Plan.all
   end

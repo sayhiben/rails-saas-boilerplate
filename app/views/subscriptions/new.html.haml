@@ -1,38 +1,4 @@
 = render 'payola/transactions/stripe_header'
 
 .row
-  - @plans.each do |plan|
-    .col-sm.col-sm-offset-1
-      .plan.card.cursor-pointer{ 'data-plan-id': plan.id, class: ('selected' if plan == @plans.first) }
-        .card-block
-          .card-title= plan.name
-          .card-text= plan.formatted_amount
-
-.row
-  .col-xs-8.col-xs-offset-2
-    .well
-      = form_tag('/subscriptions',
-            class: 'payola-onestep-subscription-form',
-            'data-payola-base-path' => '/payola',
-            'data-payola-plan-type' => @plans.first.plan_class,
-            'data-payola-plan-id' => @plans.first.id) do |f|
-        .form-group
-          %label Email Address
-          %input{type:"email", name:"stripeEmail", 'data-payola':"email", class: 'form-control', value: "#{current_user.email}"}
-        .form-group
-          %label Card Number
-          %input{type:"text", 'data-stripe':"number", size: 20, class: 'card-number form-control', placeholder: '**** **** **** ****'}
-        .row
-          .col-md-6
-            .form-group
-              %label Expiration Date
-              %input{type:"text", size: 8, class: 'exp-date form-control', placeholder: 'MM / YY'}
-              %input{type:"hidden", 'data-stripe':'exp_month'}
-              %input{type:"hidden", 'data-stripe':'exp_year'}
-          .col-md-6
-            .form-group
-            %label CVC
-            %input{type:"text", size: 4, 'data-stripe':"cvc", class:'form-control', placeholder: '***'}
-        .text-center
-          %input{type:"submit", value:'Pay Now', class: 'btn btn-info btn-lg'}
-        .alert.alert-warning.payola-payment-error{style:'display:none;'}
+  = render partial: 'subscriptions/plan', collection: @plans
