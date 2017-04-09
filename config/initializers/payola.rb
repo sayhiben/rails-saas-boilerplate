@@ -21,9 +21,22 @@ Payola.configure do |config|
   #   raise "Nope!" if sale.email.includes?('yahoo.com')
   # end
 
+  # Prevent a user from having more than one subscription
+  config.charge_verifier = lambda do |sub|
+    user = User.find_by!(email: sub.email)
+    raise 'You may only have one active subscription at a time. Please contact support.' if user.subscription.present?
+  end
+
   # Keep this subscription unless you want to disable refund handling
   config.subscribe 'charge.refunded' do |event|
     sale = Payola::Sale.find_by(stripe_id: event.data.object.id)
     sale.refund! unless sale.refunded?
+  end
+
+  # Associate user with subscription upon subscription creation
+  config.subscribe('payola.subscription.active') do |sub|
+    user = User.find_by!(email: sub.email)
+    sub.owner = user
+    sub.save!
   end
 end
