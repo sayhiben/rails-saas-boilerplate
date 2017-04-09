@@ -5,4 +5,10 @@ class Plan < ApplicationRecord
   def formatted_amount(currency: 'USD')
     Money.new(amount, currency).format
   end
+
+  # Payola requires that the redirect_path after creating/updating a subscription is defined here
+  # Do not replicate this pattern; this definition belongs in a helper method, NOT the model
+  def redirect_path(_subscription)
+    Rails.application.routes.url_helpers.subscription_path
+  end
 end

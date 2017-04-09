@@ -1,0 +1,66 @@
+<%
+  subscription = local_assigns[:subscription]
+  raise ArgumentError, 'Subscription must be provided' unless subscription.present?
+
+  button_class = local_assigns.fetch :button_class, "stripe-button-el"
+  button_inner_style = local_assigns.fetch :button_inner_style, 'min-height: 30px'
+  button_text = local_assigns.fetch :button_text, "Update Card Details"
+
+  name = local_assigns.fetch :name, ''
+  panel_label = local_assigns.fetch :panel_label, ''
+  label = local_assigns.fetch :label, ''
+  allow_remember_me = local_assigns.fetch :allow_remember_me, false
+  locale = local_assigns.fetch :locale, 'auto'
+  image = local_assigns.fetch :image, nil
+  email = local_assigns.fetch :email, ''
+
+  form_url = local_assigns.fetch :form_url, payola.update_card_path(subscription)
+  include_stripe_checkout_assets = local_assigns.fetch :include_stripe_checkout_assets, true
+
+  button_id = "payola-button-update-card"
+  form_id = "#{button_id}-form"
+
+  error_div_id = local_assigns.fetch :error_div_id, ''
+  if error_div_id.present?
+    show_default_error_div = false
+  else
+    error_div_id           = "#{button_id}-errors"
+    show_default_error_div = true
+  end
+
+  raw_data = {
+    base_path:          payola_path,
+    form_id:            form_id,
+    button_id:          button_id,
+    error_div_id:       error_div_id,
+    name:               name,
+    image_path:         image,
+    locale:             locale,
+    publishable_key:    Payola.publishable_key_for_sale(subscription),
+    panel_label:        panel_label,
+    label:              label,
+    allow_remember_me:  allow_remember_me,
+    email:              email
+  }
+
+  html_hash = {}
+  raw_data.each do |k, v|
+    html_hash["data-#{k}"] = v
+  end
+  html_hash["id"] = form_id
+%>
+
+<% if include_stripe_checkout_assets %>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"></link>
+<% end %>
+
+<%= form_tag form_url, html_hash do %>
+    <button class="<%= button_class %> payola-subscription-update-card-button" id="<%= button_id %>">
+      <span class="payola-subscription-update-card-button-text" style="display: block; <%= button_inner_style %>"><%= button_text %></span>
+      <span class="payola-subscription-update-card-button-spinner" style="display: none; <%= button_inner_style %>">Please wait...</span>
+    </button>
+    <% if show_default_error_div %>
+        <div class="payola-error-target" style="display:none" , id="<%= error_div_id %>"></div>
+    <% end %>
+<% end %>
