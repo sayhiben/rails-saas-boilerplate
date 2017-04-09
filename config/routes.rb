@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   authenticated :user do
-    resources :subscriptions, only: [:new, :create]
+    get '/subscription', to: 'subscriptions#edit'
     root to: 'home#index', as: :authenticated_root
   end
 

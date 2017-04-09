@@ -1,0 +1,7 @@
+= render 'payola/transactions/stripe_header'
+
+.row
+  = render partial: 'subscriptions/plan', collection: @plans
+- if current_user.active_subscription.present?
+  .row
+    = render 'payola/subscriptions/cancel', subscription: current_user.active_subscription

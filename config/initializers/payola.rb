@@ -1,4 +1,17 @@
 # frozen_string_literal: true
+
+# Monkey patch Payola.secret_key; there are issues with EnvWrapper and the Stripe gem
+unless Gem.loaded_specs['payola-payments'].version == Gem::Version.create('1.5.0')
+  raise 'Payola gem version changed. Can Payola monkey patches be removed?'
+end
+module Payola
+  class << self
+    def secret_key
+      @secret_key.to_s
+    end
+  end
+end
+
 Payola.configure do |config|
   # Example subscription:
   #
@@ -24,7 +37,9 @@ Payola.configure do |config|
   # Prevent a user from having more than one subscription
   config.charge_verifier = lambda do |sub|
     user = User.find_by!(email: sub.email)
-    raise 'You may only have one active subscription at a time. Please contact support.' if user.subscription.present?
+    if user.active_subscription.present?
+      raise 'You may only have one active subscription at a time. Please contact support.'
+    end
   end
 
   # Keep this subscription unless you want to disable refund handling

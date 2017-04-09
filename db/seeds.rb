@@ -29,13 +29,6 @@ end
 ################################################################################
 
 Plan.create!(
-  name: 'Free',
-  stripe_id: 'free',
-  amount: 0,
-  interval: 'month'
-)
-
-Plan.create!(
   name: 'Standard',
   stripe_id: 'standard',
   amount: 999,
