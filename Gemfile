@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
@@ -15,7 +15,7 @@ gem 'flipper'
 gem 'flipper-active_record'
 gem 'flipper-ui'
 gem 'haml'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'marginalia'
