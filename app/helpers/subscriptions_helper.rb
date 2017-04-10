@@ -24,7 +24,7 @@ module SubscriptionsHelper
   end
 
   def change_plan_button(subscription, plan)
-    render('payola/subscriptions/change_plan',
+    render('subscriptions/change_plan',
            subscription: subscription,
            new_plan:     plan,
            button_class: 'btn btn-lg btn-block',
