@@ -4,6 +4,10 @@ class Plan < ApplicationRecord
 
   has_many :subscriptions, class_name: Payola::Subscription, inverse_of: :plan, foreign_key: :plan_id
 
+  scope :visible, -> {
+    where.not(hidden: true)
+  }
+
   def formatted_amount(currency: 'USD')
     Money.new(amount, currency).format
   end
