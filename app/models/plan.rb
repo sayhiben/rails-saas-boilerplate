@@ -2,6 +2,8 @@
 class Plan < ApplicationRecord
   include Payola::Plan
 
+  has_many :subscriptions, class_name: Payola::Subscription, inverse_of: :plan, foreign_key: :plan_id
+
   def formatted_amount(currency: 'USD')
     Money.new(amount, currency).format
   end
