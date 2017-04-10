@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: saas_boilerplate_development
+  database: rails_saas_boilerplate_development
   pool: 5
   username: postgres
   password:
@@ -20,8 +20,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: saas_boilerplate_test
+  database: rails_saas_boilerplate_test
 
 production:
   <<: *default
-  database: saas_boilerplate_production
+  database: rails_saas_boilerplate_production

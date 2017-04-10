@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.payment
 //= require payola
 //= require tether
 //= require bootstrap-sprockets
