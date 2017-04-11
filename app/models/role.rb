@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class Role < ApplicationRecord
+  has_paper_trail
+
   has_many :users, through: :users_roles
 
   belongs_to :resource,

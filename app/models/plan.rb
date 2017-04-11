@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class Plan < ApplicationRecord
+  has_paper_trail
   include Payola::Plan
 
   has_many :subscriptions, class_name: Payola::Subscription, inverse_of: :plan, foreign_key: :plan_id
