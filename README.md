@@ -1,24 +1,45 @@
-# README
+# Rails SaaS Boilerplate
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project provides a starting place for building software as a service applications in Ruby on Rails. To use, clone this repository and start building. 
 
-Things you may want to cover:
+## Current Status
 
-* Ruby version
+Doubt everything in this readme. You're lucky if the server starts. See the [**Version 0** Project](https://github.com/sayhiben/rails-saas-boilerplate/projects/1) here on Github to see what's in development.
 
-* System dependencies
+### Current Features:
 
-* Configuration
+- Rails 5
+- Authentication using Devise
+- Admin interface using ActiveAdmin
+- Subscription management using Stripe via Payola Payments
+- Feature Flipping/Flagging using Flipper
+- Authorization via Pundit & Rolify
+- Bootstrap 4 & Font Awesome
+- Background jobs with Sidekiq
+- Postgres
+- rvm
+- Code quality checks with Brakeman, Rubocop, and Rails Best Practices
 
-* Database creation
+## Getting started
+First, get Postgres installed and running. Then, run this:
+```
+git clone https://github.com/sayhiben/rails-saas-boilerplate
+cd rails-saas-boilerplate
+gem install bundler
+bundle install
+cp .env_sample .env
+```
 
-* Database initialization
+Next, edit `.env` and insert your own secrets.
 
-* How to run the test suite
+Finally, this:
+```
+rake db:create && rake db:migrate && rake db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Now, you _might_ be able to run the server: 
+```
+rails s
+```
 
-* Deployment instructions
-
-* ...
+See `db/seeds.rb` for default user info.
