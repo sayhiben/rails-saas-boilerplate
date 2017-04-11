@@ -1,12 +1,13 @@
 # Rails SaaS Boilerplate
 
-This project provides a starting place for building software as a service applications in Ruby on Rails. To use, clone this repository and start building. 
+This project provides a starting place for building software as a service applications in Ruby on Rails. To use, clone this repository and start working. 
 
-## Current Status
+## Status
 
 Doubt everything in this readme. You're lucky if the server starts. See the [**Version 0** Project](https://github.com/sayhiben/rails-saas-boilerplate/projects/1) here on Github to see what's in development.
 
-### Current Features:
+### Scope:
+_These are not yet fully implemented_
 
 - Rails 5
 - Authentication using Devise
@@ -19,6 +20,7 @@ Doubt everything in this readme. You're lucky if the server starts. See the [**V
 - Postgres
 - rvm
 - Code quality checks with Brakeman, Rubocop, and Rails Best Practices
+- Tests of dubious quality
 
 ## Getting started
 First, get Postgres installed and running. Then, run this:
