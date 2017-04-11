@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   mount Payola::Engine => '/payola', as: :payola
-  devise_for :users, controllers: { registrations: 'users/registrations'}
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   ActiveAdmin.routes(self)
 
   constraints CanAccessFlipperUI do

@@ -17,4 +17,14 @@ class User < ApplicationRecord
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
+
+  def stripe_customer_id
+    return nil unless subscriptions.count.positive?
+    subscriptions.last.stripe_customer_id
+  end
+
+  def active_plan
+    return nil unless active_subscription
+    active_subscription.plan
+  end
 end

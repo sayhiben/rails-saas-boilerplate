@@ -5,11 +5,14 @@ AllCops:
     - bin/spring
     - config/initializers/devise.rb
 
-Metrics/LineLength:
-  Max: 120
-
 Documentation:
   Enabled: false
 
+Metrics/LineLength:
+  Max: 120
+
 Rails:
   Enabled: true
+
+Style/Lambda:
+  Enabled: false

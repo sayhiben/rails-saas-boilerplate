@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411022835) do
+ActiveRecord::Schema.define(version: 20170411034132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(version: 20170411022835) do
     t.integer  "setup_fee"
     t.decimal  "tax_percent",                      precision: 4, scale: 2
     t.index ["guid"], name: "index_payola_subscriptions_on_guid", using: :btree
+    t.index ["owner_type", "owner_id"], name: "index_payola_subscriptions_on_owner_type_and_owner_id", using: :btree
+    t.index ["plan_type", "plan_id"], name: "index_payola_subscriptions_on_plan_type_and_plan_id", using: :btree
   end
 
   create_table "plans", force: :cascade do |t|

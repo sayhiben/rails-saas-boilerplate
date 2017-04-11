@@ -1,30 +1,32 @@
 # frozen_string_literal: true
-class Payola::SubscriptionPolicy < ApplicationPolicy
-  def index?
-    user.has_role?(:admin)
-  end
+module Payola
+  class SubscriptionPolicy < ApplicationPolicy
+    def index?
+      user.has_role?(:admin)
+    end
 
-  def show?
-    user.has_role?(:admin)
-  end
+    def show?
+      user.has_role?(:admin)
+    end
 
-  def create?
-    false
-  end
+    def create?
+      false
+    end
 
-  def new?
-    false
-  end
+    def new?
+      false
+    end
 
-  def update?
-    false
-  end
+    def update?
+      false
+    end
 
-  def edit?
-    false
-  end
+    def edit?
+      false
+    end
 
-  def destroy?
-    false
+    def destroy?
+      false
+    end
   end
 end

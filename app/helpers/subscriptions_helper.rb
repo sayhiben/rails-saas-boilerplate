@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module SubscriptionsHelper
   def plan_button(plan)
-    if current_user.active_subscription.present? && plan == current_user.active_subscription.plan
+    if plan == current_user.active_plan
       update_payment_button(current_user.active_subscription)
-    elsif current_user.active_subscription.present?
+    elsif current_user.active_subscription
       change_plan_button(current_user.active_subscription, plan)
     else
       subscribe_button(plan)
@@ -16,9 +18,8 @@ module SubscriptionsHelper
       button_text:  'Choose Plan',
       email:        current_user.email
     }
-    if current_user.subscriptions.count > 0
-      options.merge!(stripe_customer_id: current_user.subscriptions.last.stripe_customer_id)
-    end
+    stripe_customer_id = current_user.stripe_customer_id
+    options[:stripe_customer_id] = stripe_customer_id if stripe_customer_id
 
     render('payola/subscriptions/checkout', options)
   end
