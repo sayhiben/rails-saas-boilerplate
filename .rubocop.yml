@@ -1,11 +1,11 @@
 AllCops:
   Exclude:
-    - db/**
-    - db/*/**
+    - db/*
+    - db/**/*
     - bin/spring
     - config/initializers/devise.rb
-    - vendor/**
-    - vendor/*/**
+    - vendor/*
+    - vendor/**/*
 
 Documentation:
   Enabled: false
