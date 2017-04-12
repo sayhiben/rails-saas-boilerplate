@@ -14,7 +14,7 @@ module SubscriptionsHelper
   def subscribe_button(plan)
     options = {
       plan:         plan,
-      button_class: 'btn btn-lg btn-block',
+      button_class: 'btn btn-lg btn-block _subscribe_button',
       button_text:  'Choose Plan',
       email:        current_user.email
     }
@@ -28,7 +28,7 @@ module SubscriptionsHelper
     render('subscriptions/change_plan',
            subscription: subscription,
            new_plan:     plan,
-           button_class: 'btn btn-lg btn-block',
+           button_class: 'btn btn-lg btn-block _change_plan_button',
            button_text:  'Change Plan',
            email:        current_user.email)
   end
@@ -37,7 +37,7 @@ module SubscriptionsHelper
     render('subscriptions/update_card',
            panel_label:        'Update Card',
            label:              'Update Card',
-           button_class:       'btn btn-lg btn-block',
+           button_class:       'btn btn-lg btn-block _update_payment_button',
            button_text:        'Update Card',
            subscription:       subscription,
            email:              current_user.email,

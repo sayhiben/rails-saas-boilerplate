@@ -39,7 +39,9 @@ end
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platform: :mri
+  gem 'capybara'
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.5'
 end
 
