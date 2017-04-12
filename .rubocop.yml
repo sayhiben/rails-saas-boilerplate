@@ -14,5 +14,9 @@ Metrics/LineLength:
 Rails:
   Enabled: true
 
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
 Style/Lambda:
   Enabled: false
