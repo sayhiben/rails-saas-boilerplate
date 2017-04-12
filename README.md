@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sayhiben/rails-saas-boilerplate.svg?branch=master)](https://travis-ci.org/sayhiben/rails-saas-boilerplate)
+
 # Rails SaaS Boilerplate
 
 This project provides a starting place for building software as a service applications in Ruby on Rails. To use, clone this repository and start working. 
