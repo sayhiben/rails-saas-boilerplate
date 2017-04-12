@@ -4,6 +4,8 @@ AllCops:
     - db/*/**
     - bin/spring
     - config/initializers/devise.rb
+    - vendor/**
+    - vendor/*/**
 
 Documentation:
   Enabled: false
