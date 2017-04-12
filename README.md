@@ -9,18 +9,18 @@ Doubt everything in this readme. You're lucky if the server starts. See the [**V
 ### Scope:
 _These are not yet fully implemented_
 
-- Rails 5
-- Authentication using Devise
-- Admin interface using ActiveAdmin
-- Subscription management using Stripe via Payola Payments
-- Feature Flipping/Flagging using Flipper
-- Authorization via Pundit & Rolify
-- Bootstrap 4 & Font Awesome
-- Background jobs with Sidekiq
-- Postgres
-- rvm
-- Code quality checks with Brakeman, Rubocop, and Rails Best Practices
-- Tests of dubious quality
+- ✅ Rails 5
+- ✅ Authentication using Devise
+- ⚠ Admin interface using ActiveAdmin
+- ⚠ Subscription management using Stripe via Payola Payments
+- ⛔ Feature Flipping/Flagging using Flipper
+- ⚠ Authorization via Pundit & Rolify
+- ✅ Bootstrap 4 & Font Awesome
+- ⚠ Background jobs with Sidekiq
+- ✅ Postgres
+- ✅ rvm
+- ✅ Code quality checks with Brakeman, Rubocop, and Rails Best Practices
+- ⛔ Tests of dubious quality
 
 ## Getting started
 First, get Postgres installed and running. Then, run this:
