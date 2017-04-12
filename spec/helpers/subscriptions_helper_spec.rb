@@ -6,7 +6,7 @@ RSpec.describe SubscriptionsHelper, type: :helper do
   let(:other_plan) { create(:monthly_plan, name: 'Other Plan', stripe_id: 'pln2') }
   let(:subscription) { build(:subscription, plan: plan, owner: user) }
 
-  describe '#plan_button' do
+  describe '#plan_button', :vcr do
     before do
       allow(helper).to receive(:current_user) { user }
     end
