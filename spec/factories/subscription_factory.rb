@@ -3,6 +3,6 @@ FactoryGirl.define do
   factory :subscription, class: Payola::Subscription do
     guid 'abc123'
     email 'subscription_email@example.com'
-    currency 'usd'
+    currency 'USD'
   end
 end
