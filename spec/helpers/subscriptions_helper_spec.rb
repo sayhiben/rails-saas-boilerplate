@@ -33,13 +33,33 @@ RSpec.describe SubscriptionsHelper, type: :helper do
         allow(user).to receive(:active_subscription) { nil }
       end
 
+      # This is fragile because we can't let it actually call render due to a rails-controller-tests gem incompatibility
       it 'renders the Choose Plan button' do
-        expect(helper.plan_button(plan)).to match(/_subscribe_button/)
+        options = {
+          plan:         plan,
+          button_class: 'btn btn-lg btn-block _subscribe_button',
+          button_text:  'Choose Plan',
+          email:        user.email
+        }
+
+        expect(helper).to receive(:render).with('payola/subscriptions/checkout', options)
+        helper.plan_button(plan)
       end
 
+      # This is fragile because we can't let it actually call render due to a rails-controller-tests gem incompatibility
       it 'renders the a Stripe customer id data attribute when the user already has a subscription' do
         allow(user).to receive(:subscriptions) { [build(:subscription, plan: other_plan, stripe_customer_id: 'cus1')] }
-        expect(helper.plan_button(plan)).to match(/data-stripe_customer_id="cus1"/)
+
+        options = {
+          plan:         plan,
+          button_class: 'btn btn-lg btn-block _subscribe_button',
+          button_text:  'Choose Plan',
+          email:        user.email,
+          stripe_customer_id: 'cus1'
+        }
+
+        expect(helper).to receive(:render).with('payola/subscriptions/checkout', options)
+        helper.plan_button(plan)
       end
     end
   end

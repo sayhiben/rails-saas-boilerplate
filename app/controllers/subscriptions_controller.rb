@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
 
     # If the user is subscribed to an invisible plan (maybe they were grandfathered in or the plan is a one-off), then
     # prepend the current plan so that the user can still see its details and update payment methods
-    return unless current_user.active_subscription.present? && !@plans.include?(current_user.active_subscription.plan)
-    @plans.unshift(current_user.active_subscription.plan)
+    return unless current_user.active_plan.present? && !@plans.include?(current_user.active_plan)
+    @plans.unshift(current_user.active_plan)
   end
 end

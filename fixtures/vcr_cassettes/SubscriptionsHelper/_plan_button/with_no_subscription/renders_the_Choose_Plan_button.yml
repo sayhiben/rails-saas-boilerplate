@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Stripe/v1 RubyBindings/2.0.1
       Authorization:
-      - Bearer sk_test_I2Atxypzliq2eI2knBHmniSP
+      - Bearer <STRIPE_SECRET_KEY>
       Content-Type:
       - application/x-www-form-urlencoded
       Stripe-Version:
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 12 Apr 2017 04:57:05 GMT
+      - Thu, 13 Apr 2017 04:19:55 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_ASYeoF3pstdWPz
+      - req_ASvHJkVmnIPnKD
       Stripe-Version:
       - '2015-02-18'
       Strict-Transport-Security:
@@ -61,7 +61,7 @@ http_interactions:
           "id": "pln1",
           "object": "plan",
           "amount": 100,
-          "created": 1491971085,
+          "created": 1492055776,
           "currency": "usd",
           "interval": "month",
           "interval_count": 1,
@@ -72,5 +72,5 @@ http_interactions:
           "trial_period_days": null
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 04:57:05 GMT
+  recorded_at: Thu, 13 Apr 2017 04:19:55 GMT
 recorded_with: VCR 3.0.3
