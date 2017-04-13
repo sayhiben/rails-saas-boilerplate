@@ -22,7 +22,7 @@ _These are not yet fully implemented_
 - ✅ Postgres
 - ✅ rvm
 - ✅ Code quality checks with Brakeman, Rubocop, and Rails Best Practices
-- ⛔ Tests of dubious quality
+- ⚠ Testing with RSpec & Capybara
 
 ## Getting started
 First, get Postgres installed and running. Then, run this:
