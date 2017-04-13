@@ -15,7 +15,7 @@ _These are not yet fully implemented_
 - ✅ Authentication using Devise
 - ⚠ Admin interface using ActiveAdmin
 - ⚠ Subscription management using Stripe via Payola Payments
-- ⛔ Feature Flipping/Flagging using Flipper
+- ⚠ Feature Flipping/Flagging using Flipper
 - ⚠ Authorization via Pundit & Rolify
 - ✅ Bootstrap 4 & Font Awesome
 - ⚠ Background jobs with Sidekiq
