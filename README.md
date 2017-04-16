@@ -15,14 +15,14 @@ _These are not yet fully implemented_
 - ✅ Authentication using Devise
 - ⚠ Admin interface using ActiveAdmin
 - ⚠ Subscription management using Stripe via Payola Payments
-- ⛔ Feature Flipping/Flagging using Flipper
+- ⚠ Feature Flipping/Flagging using Flipper
 - ⚠ Authorization via Pundit & Rolify
 - ✅ Bootstrap 4 & Font Awesome
 - ⚠ Background jobs with Sidekiq
 - ✅ Postgres
 - ✅ rvm
 - ✅ Code quality checks with Brakeman, Rubocop, and Rails Best Practices
-- ⛔ Tests of dubious quality
+- ⚠ Testing with RSpec & Capybara
 
 ## Getting started
 First, get Postgres installed and running. Then, run this:
