@@ -27,7 +27,7 @@ RSpec.describe SubscriptionsHelper, type: :helper do
       end
     end
 
-    context 'with no subscription' do
+    context 'without an active subscription' do
       before do
         allow(user).to receive(:active_plan) { nil }
         allow(user).to receive(:active_subscription) { nil }

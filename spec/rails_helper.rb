@@ -39,10 +39,15 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :helper
-  config.include ControllerHelpers, type: :controller
-  config.include ControllerHelpers, type: :routing
+  %i(controller helper).each do |type|
+    config.include Devise::Test::ControllerHelpers, type: type
+  end
+
+  %i(controller routing).each do |type|
+    config.include ControllerHelpers, type: type
+  end
+
+  config.include FeatureHelpers, type: 'feature'
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
