@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe 'AuthenticationProcess' do
-  let!(:user) { create(:user) }
+RSpec.describe 'Authentication Process', js: true do
+  let(:user) { create(:user) }
 
   describe 'signing up' do
     context 'with new credentials' do
@@ -38,7 +38,7 @@ RSpec.describe 'AuthenticationProcess' do
   describe 'signing in' do
     context 'with an existing user' do
       it 'signs in existing users' do
-        sign_in(user)
+        devise_sign_in(user)
         expect(page).to have_content 'Signed in'
       end
     end
@@ -58,12 +58,12 @@ RSpec.describe 'AuthenticationProcess' do
 
   describe 'signing out' do
     before do
-      sign_in(user)
+      devise_sign_in(user)
     end
 
     it 'should sign out the user' do
-      visit '/'
-      click_link 'Sign out'
+      # Capybara-webkit thinks the navbar is overlapping its contents, so cheat to click the link
+      page.execute_script("$('._sign-out').click();")
       expect(page).to have_content 'Signed out successfully'
     end
   end

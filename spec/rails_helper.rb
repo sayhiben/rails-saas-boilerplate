@@ -1,20 +1,54 @@
 # frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'capybara/webkit'
+require 'database_cleaner'
 require 'devise'
 require 'vcr'
+
+# This is monkey patched because otherwise the screenshots are hardcoded to 1024x768
+module Capybara
+  class Session
+    def save_screenshot(path = nil, options = {})
+      options[:width] = current_window.size[0] unless options[:width]
+      options[:height] = current_window.size[1] unless options[:height]
+
+      path = prepare_path(path, 'png')
+      driver.save_screenshot(path, options)
+      path
+    end
+  end
+end
+
+# Capybara settings
+Capybara::Webkit.configure do |config|
+  config.debug = false
+  config.raise_javascript_errors = true
+  config.ignore_ssl_errors
+  config.skip_image_loading
+
+  whitelisted_urls = %w(checkout.stripe.com js.stripe.com api.stripe.com)
+  whitelisted_urls.each { |url| config.allow_url(url) }
+end
+
+Capybara.javascript_driver = :webkit
+Capybara.default_max_wait_time = 5
 
 # Configure VCR
 VCR.configure do |config|
   config.cassette_library_dir = 'fixtures/vcr_cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
+  # config.debug_logger = STDOUT
   config.filter_sensitive_data('<STRIPE_SECRET_KEY>') { ENV['STRIPE_SECRET_KEY'] }
   config.filter_sensitive_data('<STRIPE_PUBLISHABLE_KEY>') { ENV['STRIPE_PUBLISHABLE_KEY'] }
 end
@@ -49,13 +83,44 @@ RSpec.configure do |config|
 
   config.include FeatureHelpers, type: 'feature'
 
+  # Set default cleaning mode to :transaction
+  config.before(:each) do
+    DatabaseCleaner.clean_with(:transaction)
+  end
+
+  config.before(:each, type: :feature) do
+    # Set feature cleaning mode to truncation
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    unless driver_shares_db_connection_with_specs
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    # Resize window
+    Capybara.page.current_window.resize_to('1920', '1280')
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  # Disable VCR for feature specs
+  config.around(:each, type: :feature) do |example|
+    WebMock.allow_net_connect!
+    VCR.turned_off { example.run }
+    WebMock.disable_net_connect!
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  # config.use_transactional_fixtures = true
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

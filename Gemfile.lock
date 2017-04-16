@@ -90,6 +90,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.14.0)
+      capybara (>= 2.3.0, < 2.14.0)
+      json
     code_analyzer (0.4.7)
       sexp_processor
     coffee-rails (4.2.1)
@@ -103,6 +106,7 @@ GEM
     connection_pool (2.2.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -365,6 +369,8 @@ DEPENDENCIES
   brakeman
   byebug
   capybara
+  capybara-webkit
+  database_cleaner
   devise
   dotenv-rails
   factory_girl_rails

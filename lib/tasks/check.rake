@@ -4,7 +4,8 @@ task :rubocop do
 end
 
 task :rspec do
-  sh 'bundle exec rspec'
+  # Exclude feature tests since we don't want to run them on CI servers due to maintenance nightmares
+  sh 'bundle exec rspec --exclude-pattern "spec/features/**/*_spec.rb"'
 end
 
 task :check do
