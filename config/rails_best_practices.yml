@@ -34,6 +34,7 @@ RemoveUnusedMethodsInModelsCheck: {
   except_methods: [
     'Plan#redirect_path',
     'User#active_plan',
+    'User#flipper_id',
     'User#send_devise_notification'
   ]
 }

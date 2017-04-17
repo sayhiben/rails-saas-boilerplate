@@ -12,8 +12,16 @@ Documentation:
 
 Metrics/AbcSize:
   Max: 30
+  Exclude:
+    - spec/*
+    - spec/**/*
 
 Metrics/BlockLength:
+  Exclude:
+    - spec/*
+    - spec/**/*
+
+Metrics/MethodLength:
   Exclude:
     - spec/*
     - spec/**/*
