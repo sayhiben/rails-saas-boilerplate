@@ -1,4 +1,9 @@
+sudo: required
+dist: trusty
 language: ruby
+
+script:
+  - xvfb-run bundle exec rake check
 
 services:
   - postgresql
@@ -7,5 +12,15 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
 
-script:
-  - bundle exec rake check
+env:
+  global:
+    - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+    - JAVA_OPTS=-Djava.security.egd=file:/dev/urandom
+
+addons:
+  apt:
+    sources:
+      - ubuntu-sdk-team
+    packages:
+      - libqt5webkit5-dev
+      - qtdeclaratvie5-dev
