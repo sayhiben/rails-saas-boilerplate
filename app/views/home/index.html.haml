@@ -1,1 +1,9 @@
 %h1 Hello World
+
+%h2 Features:
+
+%h3 Standard features:
+= Rails.application.config.flipper[:standard_example_feature].enabled?(current_user) ? 'Enabled' : 'Disabled'
+
+%h3 Pro features:
+= Rails.application.config.flipper[:professional_example_feature].enabled?(current_user) ? 'Enabled' : 'Disabled'

@@ -27,4 +27,8 @@ class User < ApplicationRecord
     return nil unless active_subscription
     active_subscription.plan
   end
+
+  def flipper_id
+    "User:#{id}"
+  end
 end
