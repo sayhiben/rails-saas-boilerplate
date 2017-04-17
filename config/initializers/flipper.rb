@@ -3,7 +3,7 @@ Rails.application.config.flipper = Flipper.new(Flipper::Adapters::ActiveRecord.n
 Flipper.register(:admins) { |user| user.has_role?(:admin) }
 
 # Register each plan and create an example feature for that group
-if ActiveRecord::Base.connection.table_exists? :plans
+if ActiveRecord::Base.connection.data_source_exists? :plans
   Plan.all.each do |plan|
     group_name = "#{plan.name.underscore}_plan_subscribers".to_sym
     Flipper.register(group_name) { |user| user.active_plan == plan }
