@@ -41,7 +41,7 @@ Capybara::Webkit.configure do |config|
 end
 
 Capybara.javascript_driver = :webkit
-Capybara.default_max_wait_time = 5
+Capybara.default_max_wait_time = 15
 
 # Configure VCR
 VCR.configure do |config|
