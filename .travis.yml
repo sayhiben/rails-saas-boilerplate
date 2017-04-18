@@ -1,6 +1,7 @@
 dist: trusty
 sudo: required
 language: ruby
+cache: bundler
 rvm: 2.4
 
 script:
@@ -22,6 +23,7 @@ env:
 
 addons:
   artifacts:
+    debug: true
     paths:
       - $(ls /tmp/capybara/*.png | tr "\n" ":")
   apt:
