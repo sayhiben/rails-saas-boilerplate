@@ -47,6 +47,7 @@ module FeatureHelpers
       find_field('CVC').send_keys('123')
 
       # Submit form
+      expect(page).to have_selector('button[type="submit"]')
       find('button[type="submit"]').click
     end
 
