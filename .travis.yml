@@ -25,7 +25,7 @@ addons:
   artifacts:
     debug: true
     paths:
-      - $(ls /tmp/capybara/*.png | tr "\n" ":")
+      - tmp/capybara/
   apt:
     sources:
       - ubuntu-sdk-team
