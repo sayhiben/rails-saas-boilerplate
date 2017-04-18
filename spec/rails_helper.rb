@@ -31,7 +31,7 @@ end
 
 # Capybara settings
 Capybara::Webkit.configure do |config|
-  config.debug = true
+  config.debug = false
   config.raise_javascript_errors = true
   config.ignore_ssl_errors
   config.skip_image_loading

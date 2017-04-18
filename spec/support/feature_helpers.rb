@@ -52,7 +52,6 @@ module FeatureHelpers
     end
 
     # Wait for the page to load and show the update payment button for the plan, indicating success
-    page.save_screenshot
     expect(page).to have_selector(".plan[data-plan-id='#{plan.id}'] ._update_payment_button")
   end
 

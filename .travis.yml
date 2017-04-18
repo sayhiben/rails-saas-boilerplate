@@ -1,10 +1,8 @@
-dist: trusty
-sudo: required
 language: ruby
 cache: bundler
 
 script:
-  - xvfb-run bundle exec rake check
+  - bundle exec rake ci_check
 
 services:
   - postgresql
@@ -12,22 +10,3 @@ services:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
-
-env:
-  global:
-    - BUNDLE_JOBS=4
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-    - QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
-    - JAVA_OPTS=-Djava.security.egd=file:/dev/urandom
-
-addons:
-  artifacts:
-    debug: true
-    paths:
-      - tmp/capybara/
-  apt:
-    sources:
-      - ubuntu-sdk-team
-    packages:
-      - libqt5webkit5-dev
-      - qtdeclarative5-dev
