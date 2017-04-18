@@ -2,7 +2,6 @@ dist: trusty
 sudo: required
 language: ruby
 cache: bundler
-rvm: 2.4
 
 script:
   - xvfb-run bundle exec rake check
