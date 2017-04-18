@@ -21,7 +21,7 @@ env:
     - JAVA_OPTS=-Djava.security.egd=file:/dev/urandom
 
 addons:
-  artifacts: true
+  artifacts:
     paths:
       - $(ls /tmp/capybara/*.png | tr "\n" ":")
   apt:
