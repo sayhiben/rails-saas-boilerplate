@@ -22,6 +22,8 @@ env:
 
 addons:
   artifacts: true
+    paths:
+      - $(ls /tmp/capybara/*.png | tr "\n" ":")
   apt:
     sources:
       - ubuntu-sdk-team
