@@ -34,6 +34,11 @@ Payola.configure do |config|
   #   raise "Nope!" if sale.email.includes?('yahoo.com')
   # end
 
+  # Send email
+  Payola.configure do |config|
+    config.send_email_for :receipt, :refund, :admin_receipt, :admin_dispute, :admin_refund, :admin_failure
+  end
+
   # Prevent a user from having more than one subscription
   config.charge_verifier = lambda do |sub|
     user = User.find_by!(email: sub.email)
