@@ -35,9 +35,7 @@ Payola.configure do |config|
   # end
 
   # Send email
-  Payola.configure do |config|
-    config.send_email_for :receipt, :refund, :admin_receipt, :admin_dispute, :admin_refund, :admin_failure
-  end
+  config.send_email_for :receipt, :refund, :admin_receipt, :admin_dispute, :admin_refund, :admin_failure
 
   # Prevent a user from having more than one subscription
   config.charge_verifier = lambda do |sub|
